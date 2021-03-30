@@ -1,1 +1,1 @@
-# competitive
+# contests
