@@ -12,26 +12,34 @@ typedef long long ll;
 #define cinvs(s, n) vs s(n); fori(0, n) { cin>>s[i]; }
 #define cinvd(a, n) vd a(n); fori(0, n) { cin>>a[i]; }
 
-typedef vector<double>   vd;
-typedef vector<bool>     vb;
-typedef vector<int>      vi;
-typedef vector<vi>      vvi;
-typedef vector<string>   vs;
-
-
+typedef vector<double> vd;
+typedef vector<bool> vb;
+typedef vector<int> vi;
+typedef vector<vi> vvi;
+typedef vector<string> vs;
 
 void solve() {
-	// ---------------------
 
-	
+	cini(n);
 
-	// ---------------------
+	map<string, int> map;
+
+	fori(0, n) {
+		cins(aux);
+		if(map.find(aux) != map.end()){
+			map[aux] = map[aux]+1;
+			cout << aux << map[aux] << endl;
+		}
+		else {
+			cout << "OK" << endl;
+			map.insert(make_pair(aux, 0));
+		}
+	}
 }
 
 int main(){
 
-	cini(t);
-	// int t=1;
+	int t=1;
 
 	while (t--) {
 		solve();

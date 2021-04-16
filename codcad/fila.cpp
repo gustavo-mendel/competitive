@@ -12,26 +12,46 @@ typedef long long ll;
 #define cinvs(s, n) vs s(n); fori(0, n) { cin>>s[i]; }
 #define cinvd(a, n) vd a(n); fori(0, n) { cin>>a[i]; }
 
-typedef vector<double>   vd;
-typedef vector<bool>     vb;
-typedef vector<int>      vi;
-typedef vector<vi>      vvi;
-typedef vector<string>   vs;
-
-
+typedef vector<double> vd;
+typedef vector<bool> vb;
+typedef vector<int> vi;
+typedef vector<vi> vvi;
+typedef vector<string> vs;
 
 void solve() {
-	// ---------------------
 
-	
+	cini(n);
+	cinvi(fila, n);
 
-	// ---------------------
+	cini(m);
+	cinvi(saiu, m);
+
+	fori(0, m) {
+		forj(0, n) {
+			if (fila[j] == saiu[i]) {
+				fila[j] = 0;
+				break;
+			}
+		}
+	}
+
+	vi res;
+
+	fori(0, n) {
+		if(fila[i]) {
+			res.push_back(fila[i]);
+		}
+	}
+
+	fori(0, res.size()) {
+		cout << res[i] << " ";
+	}
+	cout << endl;
 }
 
 int main(){
 
-	cini(t);
-	// int t=1;
+	int t = 1;
 
 	while (t--) {
 		solve();
