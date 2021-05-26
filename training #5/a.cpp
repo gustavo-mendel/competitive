@@ -11,10 +11,29 @@ using ld = long double;
 #define forj(x, n) for(int j=x; j<=n; j++)
 #define fork(x, n) for(int k=x; k<=n; k++)
 
+void precal () {
+	
+}
+
 void solve() {
 	// -------------------------------------------
 
-	cout << 1 << endl;
+	cini(n);
+
+	if (n == 1) {
+		cout << "1 is not a prime" << endl;
+		return;
+	}
+	else {
+
+		for (int i=2; i*i < n; i++) {
+			if (n % i == 0) {
+				cout << n << " is not a prime" << endl;
+				return;
+			}
+		}
+		cout << n << " is a prime" << endl;
+	}
 
 	// -------------------------------------------
 }
@@ -25,8 +44,9 @@ int32_t main() {
 	cin.tie(NULL);
 	cout.tie(NULL);
 
-	// cini(t);
-	int t=1;
+	precal();
+	cini(t);
+	// int t=1;
 
 	while(t--) {
 		solve();

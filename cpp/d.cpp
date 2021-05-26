@@ -14,7 +14,42 @@ using ld = long double;
 void solve() {
 	// -------------------------------------------
 
-	cout << 1 << endl;
+	int n;
+	while (cin >> n && n) {
+
+		vector<int> arr(n+1, 1);
+
+		arr[0] = 0;
+		arr[1] = 0;
+		
+		for (int i=2; i*i<=n; i++) {
+			if (arr[i]) {
+				for (int j=i*i; j*j<=n; j+=i) {
+					arr[j] = 0;
+				}
+			}
+		}
+
+		for (int i=0; i*i<n; i++) {
+			if (arr[i]) {
+				if (i * i > n) {
+					break;
+				}
+
+				int cnt = 0;
+				while (n % i == 0) {
+					n /= i;
+					cnt++;
+				}
+
+				if (cnt) {
+					cout << i << "^" << cnt << " ";
+				}
+			}
+		}
+
+		cout << endl;
+	}
 
 	// -------------------------------------------
 }

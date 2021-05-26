@@ -11,10 +11,47 @@ using ld = long double;
 #define forj(x, n) for(int j=x; j<=n; j++)
 #define fork(x, n) for(int k=x; k<=n; k++)
 
+bool is_prime(int n) {
+	if (n == 1) return false;
+
+	for (int i=2; i*i <= n; i++) {
+		if (n % i == 0) return false;
+	}
+
+	return true;
+}
+
+vector<int> prime;
+
+void precalc (int n) {
+
+	int cnt = 2;
+	while (cnt < n) {
+		if (is_prime(cnt)) {
+			prime.push_back(cnt);
+		}
+		cnt++;
+	}
+}
+
 void solve() {
 	// -------------------------------------------
 
-	cout << 1 << endl;
+	cini(n);
+	precalc(n);
+	
+	int ans = 0;
+	for (int i=1; i<=n; i++) {
+
+		int cnt = 0;
+		for (int j=0; j<prime.size(); j++) {
+			if (i % prime[j] == 0) cnt++;
+		}
+
+		if (cnt == 2) ans++;
+	}
+
+	cout << ans << endl;
 
 	// -------------------------------------------
 }

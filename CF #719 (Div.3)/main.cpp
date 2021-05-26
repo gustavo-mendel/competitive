@@ -14,8 +14,39 @@ using ld = long double;
 void solve() {
 	// -------------------------------------------
 
-	cout << 1 << endl;
+	cini(n);
+	
+	stringstream ss;
+	
+	int ans = 0;
+	int k = 1;
+	
+	if (n < 10) {
+		cout << n << endl;
+		return;
+	}
+	
+	for (int i=1; i*10<=n; i*=10) {
+		ans += 9;
+		k *= 10;
+	}
+	
+	for (int i=k; i<n; i++) {
+		ss << i;
+		string aux;
+		ss >> aux;
+		
+		bool ok = true;
+		
+		if ((int)count(aux.begin(), aux.end(), aux.at(0)) != (int)aux.size()) {
+			ok = false;
+		}
+		
+		if (ok) ans++;
+	}
 
+	cout << ans << endl;
+	
 	// -------------------------------------------
 }
 
@@ -25,8 +56,8 @@ int32_t main() {
 	cin.tie(NULL);
 	cout.tie(NULL);
 
-	// cini(t);
-	int t=1;
+	cini(t);
+	// int t=1;
 
 	while(t--) {
 		solve();

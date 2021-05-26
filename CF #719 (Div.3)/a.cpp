@@ -14,7 +14,35 @@ using ld = long double;
 void solve() {
 	// -------------------------------------------
 
-	cout << 1 << endl;
+	cini(n);
+	char task[n];
+	
+	fori(0, n-1) {
+		cin >> task[i];
+	}
+	
+	bool ok = true;
+	
+	for (int i=0; i<n; i++) {
+		if (i) {
+			
+			int k = i;
+			while (task[k] == task[k-1] && task[k-1]) {
+				k--;
+			}
+			
+			for (int j=k-1; j>=0; j--) {
+				if (task[j] == task[k]) {
+					ok = false;
+					break;
+				}
+			}
+		}
+	}
+	
+	if (ok) cout << "YES" << endl;
+	else 	cout << "NO"  << endl;
+	
 
 	// -------------------------------------------
 }
@@ -25,8 +53,8 @@ int32_t main() {
 	cin.tie(NULL);
 	cout.tie(NULL);
 
-	// cini(t);
-	int t=1;
+	cini(t);
+	// int t=1;
 
 	while(t--) {
 		solve();

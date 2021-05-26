@@ -24,6 +24,13 @@ int32_t main() {
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL);
 	cout.tie(NULL);
+	
+	String aux = "ladder";
+	String in  = aux +  ".in";
+	String out = aux + ".out";
+	
+	freopen(in, "r", stdin);
+	freopen(out, "w", stdout);
 
 	// cini(t);
 	int t=1;
