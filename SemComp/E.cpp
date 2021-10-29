@@ -11,36 +11,52 @@ using ld = long double;
 #define forj(x, n) for(int j=x; j<=n; j++)
 #define fork(x, n) for(int k=x; k<=n; k++)
 
-bool compare (string i, string j) {
-	return (i.size() < j.size());
-}
-
 void solve() {
 	// -------------------------------------------
+
+	int max = 100001;
 
 	int n;
 	cin >> n;
 
-	vector<string> arr(n);
+	int aux[max] = { 0 };
 
-	fori (0, n-1) {
-		cin >> arr[i];
+	for (int i=0; i<n; i++) {
+		int a;
+		cin >> a;
+		aux[a] += 1;
 	}
 
-	sort(arr.begin(), arr.end(), compare);
+	int ans = 0;
+	int ult = 0;
+	for (int i=0; i<max; i++) {
+		if (aux[i]) {
+			if (ult) {
 
-	for (int i=0; i<n-1; i++) {
-		if (arr[i+1].find(arr[i]) == string::npos) {
-			cout << "NO" << endl;
-			return;
+				aux[ult + i] += 1;
+
+				ans += ult + i;
+				aux[i] -= 1;
+
+				ult = 0;
+			}
+			while (aux[i] > 1) {
+				int sum = i + i;
+				aux[sum] += 1;
+
+				ans += sum;
+				aux[i] -= 2;
+			}
+			if (aux[i]) {
+				ult = i;
+			}
+			else {
+				ult = 0;
+			}
 		}
 	}
 
-	cout << "YES" << endl;
-
-	for (vector<string>::iterator it=arr.begin(); it != arr.end(); ++it) {
-		cout << *it << endl;
-	}
+	cout << ans << endl;
 
 	// -------------------------------------------
 }
@@ -51,8 +67,8 @@ int32_t main() {
 	cin.tie(NULL);
 	cout.tie(NULL);
 
-	// cini(t);
-	int t=1;
+	cini(t);
+	// int t=1;
 
 	while(t--) {
 		solve();

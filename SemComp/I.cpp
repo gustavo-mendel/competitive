@@ -11,36 +11,23 @@ using ld = long double;
 #define forj(x, n) for(int j=x; j<=n; j++)
 #define fork(x, n) for(int k=x; k<=n; k++)
 
-bool compare (string i, string j) {
-	return (i.size() < j.size());
-}
-
 void solve() {
 	// -------------------------------------------
 
-	int n;
-	cin >> n;
+	int n, k;
+	cin >> n >> k;
 
-	vector<string> arr(n);
+	vector<int> x(n);
+	vector<int> y(n);
 
-	fori (0, n-1) {
-		cin >> arr[i];
+	for (int i=0; i<n; i++) {
+		cin >> x[i] >> y[i];
 	}
 
-	sort(arr.begin(), arr.end(), compare);
+	sort(x.begin(), x.end());
+	sort(y.begin(), y.end());
 
-	for (int i=0; i<n-1; i++) {
-		if (arr[i+1].find(arr[i]) == string::npos) {
-			cout << "NO" << endl;
-			return;
-		}
-	}
-
-	cout << "YES" << endl;
-
-	for (vector<string>::iterator it=arr.begin(); it != arr.end(); ++it) {
-		cout << *it << endl;
-	}
+	cout << (x[n-1] - x[0] + 2 * k) * (y[n-1] - y[0] + 2 * k) << endl; 
 
 	// -------------------------------------------
 }

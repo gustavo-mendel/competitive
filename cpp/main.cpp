@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-using ll = long long;
+using ll = unsigned long long;
 using ld = long double;
 // By: mende1
 
@@ -11,13 +11,52 @@ using ld = long double;
 #define forj(x, n) for(int j=x; j<=n; j++)
 #define fork(x, n) for(int k=x; k<=n; k++)
 
-#define MAX 200000
-
-
 void solve() {
 	// -------------------------------------------
 
-	
+	int max = 100001;
+
+	int n;
+	cin >> n;
+
+	int aux[max] = { 0 };
+
+	for (int i=0; i<n; i++) {
+		int a;
+		cin >> a;
+		aux[a] += 1;
+	}
+
+	int ans = 0;
+	int ult = 0;
+	for (int i=0; i<max; i++) {
+		if (aux[i]) {
+			if (ult) {
+
+				aux[ult + i] += 1;
+
+				ans += ult + i;
+				aux[i] -= 1;
+
+				ult = 0;
+			}
+			while (aux[i] > 1) {
+				int sum = i + i;
+				aux[sum] += 1;
+
+				ans += sum;
+				aux[i] -= 2;
+			}
+			if (aux[i]) {
+				ult = i;
+			}
+			else {
+				ult = 0;
+			}
+		}
+	}
+
+	cout << ans << endl;
 
 	// -------------------------------------------
 }
@@ -28,8 +67,8 @@ int32_t main() {
 	cin.tie(NULL);
 	cout.tie(NULL);
 
-	// cini(t);
-	int t=1;
+	cini(t);
+	// int t=1;
 
 	while(t--) {
 		solve();

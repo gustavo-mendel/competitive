@@ -11,36 +11,15 @@ using ld = long double;
 #define forj(x, n) for(int j=x; j<=n; j++)
 #define fork(x, n) for(int k=x; k<=n; k++)
 
-bool compare (string i, string j) {
-	return (i.size() < j.size());
-}
-
 void solve() {
 	// -------------------------------------------
 
-	int n;
+	unsigned long long n;
 	cin >> n;
 
-	vector<string> arr(n);
+	unsigned long long ans = sqrt(n);
 
-	fori (0, n-1) {
-		cin >> arr[i];
-	}
-
-	sort(arr.begin(), arr.end(), compare);
-
-	for (int i=0; i<n-1; i++) {
-		if (arr[i+1].find(arr[i]) == string::npos) {
-			cout << "NO" << endl;
-			return;
-		}
-	}
-
-	cout << "YES" << endl;
-
-	for (vector<string>::iterator it=arr.begin(); it != arr.end(); ++it) {
-		cout << *it << endl;
-	}
+	cout << ans << endl;
 
 	// -------------------------------------------
 }
@@ -51,8 +30,8 @@ int32_t main() {
 	cin.tie(NULL);
 	cout.tie(NULL);
 
-	// cini(t);
-	int t=1;
+	cini(t);
+	// int t=1;
 
 	while(t--) {
 		solve();
