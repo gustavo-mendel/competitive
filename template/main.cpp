@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-using ll = unsigned long long;
+using ll = long long;
 using ld = long double;
 // By: mende1
 
